@@ -2,8 +2,8 @@
 //các phần tử là những số nguyên lớn hơn 0
 //và nhỏ hơn 100 được nhập vào từ bàn phím. Thực hiện các chức năng sau:
 //a) Tìm phần tử lớn nhất của ma trận cùng chỉ số của số đó.
-// b) Tìm và in ra các phần tử là số nguyên tố của ma trận
-// (các phần tử không nguyên tố thì thay bằng số 0).
+//b) Tìm và in ra các phần tử là số nguyên tố của ma trận
+//(các phần tử không nguyên tố thì thay bằng số 0).
 //c) Sắp xếp tất cả các cột của ma trận theo thứ tự tăng dần và in kết quả ra màn hình.
 
 import java.util.Scanner;
@@ -19,7 +19,6 @@ public class lab0_b14 {
     }
 
     public static void display(int n, int m, int arr[][]) {
-        System.out.println("Ma tran vua nhap la:");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 System.out.print(arr[i][j] + " ");
@@ -73,6 +72,22 @@ public class lab0_b14 {
         }
     }
 
+    public static void sortCol(int n, int m, int arr[][]) {
+        System.out.println("Ma tran sau sap xep theo cot la:");
+        for(int j = 0; j < m; j++) {
+            for (int i = 0; i < n - 1; i++) {
+                for(int k = i + 1; k < n; k++) {
+                    if(arr[i][j] > arr[k][j]) {
+                        int temp = arr[i][j];
+                        arr[i][j] = arr[k][j];
+                        arr[k][j] = temp;
+                    }
+                }
+            }
+        }
+        display(n, m, arr);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap so hang: ");
@@ -81,8 +96,10 @@ public class lab0_b14 {
         int m = sc.nextInt();
         int[][] arr = new int[n][m];
         input(n, m, arr);
+        System.out.println("Ma tran vua nhap la:");
         display(n, m, arr);
         max(n, m, arr);
         primeDisplay(n, m, arr);
+        sortCol(n, m, arr);
     }
 }
