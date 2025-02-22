@@ -24,7 +24,7 @@ public class ps {
 
     public ps add(ps p) {
         ps result = new ps();
-        result.ts = this.ts * p.ms + p.ts * p.ms;
+        result.ts = this.ts * p.ms + p.ts * this.ms;
         result.ms = this.ms * p.ms;
         result.rg();
         return result;
@@ -32,8 +32,8 @@ public class ps {
 
     public ps sub(ps p) {
         ps result = new ps();
-        result.ts = this.ts * p.ms - p.ts * p.ms;
-        result.rg();result.ms = this.ms * p.ms;
+        result.ts = this.ts * p.ms - p.ts * this.ms;
+        result.ms = this.ms * p.ms;
         result.rg();
         return result;
     }
@@ -46,25 +46,51 @@ public class ps {
         return result;
     }
 
+    public ps div(ps p) {
+        ps result = new ps();
+        result.ts = this.ts * p.ms;
+        result.ms = this.ms * p.ts;
+        result.rg();
+        return result;
+    }
+
     public void rg() {
         int a = Math.abs(ts), b = Math.abs(ms);
-        while(a != b) {
-            if(a > b) {
-                a -= b;
-            }
-            else {
-                b -= a;
-            }
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
         }
         ts /= a;
         ms /= a;
+
+        // Đảm bảo mẫu số luôn dương
+        if (ms < 0) {
+            ts = -ts;
+            ms = -ms;
+        }
     }
 
     public static void main(String[] args) {
         ps p1 = new ps(3,6);
-        ps p2 = new ps(3,8);
+        ps p2 = new ps(4,8);
 
+
+        System.out.print("a = ");
+        p1.display();
+        System.out.print("b = ");
+        p2.display();
+        System.out.print("a + b = ");
         ps sum  = p1.add(p2);
         sum.display();
+        System.out.print("a - b = ");
+        ps sub = p1.sub(p2);
+        sub.display();
+        System.out.print("a * b = ");
+        ps mul = p1.mul(p2);
+        mul.display();
+        System.out.print("a / b = ");
+        ps div = p1.div(p2);
+        div.display();
     }
 }
