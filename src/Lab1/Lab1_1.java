@@ -11,8 +11,10 @@
 //Take one down, pass it around,
 //No more bottles of beer on the wall.
 
+
 public class Lab1_1 {
     public static void main(String[] args) {
+
         System.out.print("Ho ten: Pham Anh Duc\t");
         System.out.print("MSV: 74DCHT22041\t");
         System.out.print("Lop: 74DCHT21\t");
@@ -22,12 +24,11 @@ public class Lab1_1 {
             if(i > 1) {
                 System.out.println(i + " bottles of beer on the wall, " + i + " bottles of beer.");
                 System.out.println("Take one down, pass it around,");
-            } else if (i - 1 > 0) {
+            } else if (i == 1) {
                 System.out.println(i + " bottle of beer on the wall, " + i + " bottle of beer.");
                 System.out.println("Take one down, pass it around,");
-            } else {
-                System.out.print("No more bottles of beer on the wall.");
             }
         }
+        System.out.print("No more bottles of beer on the wall.");
     }
 }

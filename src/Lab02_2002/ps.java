@@ -1,9 +1,10 @@
 //Tạo lớp phân số ps có hai thuộc tính là tử và mẫu
 //a. Xây dựng hai hàm khởi tạo có tham số khác nhau
 //b. Xây dựng các phương thức cộng, trừ, nhân, chia phân số
+import java.util.Scanner;
 
 public class ps {
-    private int ts = 1, ms = 1;
+    private int ts, ms;
 
     public ps () {
         this.ts = 0;
@@ -16,6 +17,18 @@ public class ps {
             System.out.print("MS khong the bang 0, da dat MS bang 1");
             this.ts = 1;
         } else this.ms = ms;
+    }
+
+    public void input() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập TS: ");
+        this.ts = sc.nextInt();
+        do {
+            System.out.print("Nhập MS: ");
+            this.ms = sc.nextInt();
+            if (this.ms == 0) System.out.println("MS phai khac 0!");
+        } while (this.ms == 0);
+        rg();
     }
 
     public void display() {
@@ -64,7 +77,6 @@ public class ps {
         ts /= a;
         ms /= a;
 
-        // Đảm bảo mẫu số luôn dương
         if (ms < 0) {
             ts = -ts;
             ms = -ms;
@@ -72,8 +84,13 @@ public class ps {
     }
 
     public static void main(String[] args) {
-        ps p1 = new ps(3,6);
-        ps p2 = new ps(4,8);
+        Scanner sc = new Scanner(System.in);
+        ps p1 = new ps();
+        System.out.println("Nhap PS1: ");
+        p1.input();
+        ps p2 = new ps();
+        System.out.println("Nhap PS2: ");
+        p2.input();
 
 
         System.out.print("a = ");
