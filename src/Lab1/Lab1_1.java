@@ -20,15 +20,16 @@ public class Lab1_1 {
         System.out.print("Lop: 74DCHT21\t");
         System.out.println("Email: duc74dcht22041@st.utt.edu.vn");
 
-        for(int i = 9; i >= 1; i--) {
-            if(i > 1) {
+        for (int i = 9; i >= 0; i--) {
+            if (i > 1) {
                 System.out.println(i + " bottles of beer on the wall, " + i + " bottles of beer.");
                 System.out.println("Take one down, pass it around,");
             } else if (i == 1) {
                 System.out.println(i + " bottle of beer on the wall, " + i + " bottle of beer.");
                 System.out.println("Take one down, pass it around,");
+            } else if (i == 0) {
+                System.out.print("No more bottles of beer on the wall.");
             }
         }
-        System.out.print("No more bottles of beer on the wall.");
     }
 }
