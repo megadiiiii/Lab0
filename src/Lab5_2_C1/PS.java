@@ -9,6 +9,7 @@ package Lab5_2_C1;
 //        2>Viet chuong trinh ung dung thuc hien viec nhap vao mot day cac phan
 //so va in ra man hinh dang toi gian cua cac phan so do.
 //
+
 import java.util.Scanner;
 
 public class PS {
@@ -18,6 +19,7 @@ public class PS {
         this.TS = 0;
         this.MS = 1;
     }
+
     public PS(int TS, int MS) {
         this.TS = TS;
         this.MS = MS;
@@ -33,7 +35,9 @@ public class PS {
     }
 
     public void Display() {
-        System.out.println(TS + "/" + MS);
+        PS pstg = new PS(TS, MS);
+        pstg.RG();
+        System.out.println(pstg.TS + "/" + pstg.MS);
     }
 
     public boolean KTTG() {
@@ -55,7 +59,7 @@ public class PS {
         }
         TS /= a;
         MS /= a;
-        if(MS < 0) {
+        if (MS < 0) {
             TS = -TS;
             MS = -MS;
         }
